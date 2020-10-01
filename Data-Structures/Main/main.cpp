@@ -1,6 +1,6 @@
 #include<iostream>
 
-#include"../Stack/stack.cpp"
+#include"../Queue/queue.cpp"
 
 struct tubelight{
     int val;
@@ -12,19 +12,26 @@ struct tubelight{
     }
 };
 
+
+std::ostream& operator << (std::ostream& o, const tubelight& a)
+{
+    o <<a.val<<std::endl;
+    return o;
+}
+
 int main(){
     tubelight l1(10);
     tubelight l2(20);
     tubelight l3(30);
-    stack<char> list(NULL, 0);
-    list.push('s');
-    list.push('l');
-    list.push('v');
-    std::cout<<list.pop()<<"\n";
-    std::cout<<list.pop()<<"\n";
-    std::cout<<list.pop()<<"\n";
-    std::cout<<list.pop()<<"\n";
-    std::cout<<list.pop()<<"\n";
-    std::cout<<list.pop()<<"\n";
+    queue<tubelight> list(NULL, NULL, 0);
+    list.enqueue(l1);
+    list.enqueue(l2);
+    list.enqueue(l3);
+    std::cout<<list.dequeue()<<"\n";
+    std::cout<<list.dequeue()<<"\n";
+    std::cout<<list.dequeue()<<"\n";
+    std::cout<<list.dequeue()<<"\n";
+    std::cout<<list.dequeue()<<"\n";
+    std::cout<<list.dequeue()<<"\n";
     return 0;
 }
