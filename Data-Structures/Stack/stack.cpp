@@ -9,8 +9,8 @@ template<class data_type> class stack {
     public:
         stack(doubly_linked_list_node<data_type> * top, long long size);
         long long get_size();
-        data_type * pop();
-        void push(data_type * data);
+        data_type pop();
+        void push(data_type data);
 };
 
 template<class data_type> stack<data_type>::stack(doubly_linked_list_node<data_type> * top, long long size) {
@@ -22,7 +22,7 @@ template<class data_type> long long stack<data_type>::get_size() {
     return this->size;
 }
 
-template<class data_type> void stack<data_type>::push(data_type * data) {
+template<class data_type> void stack<data_type>::push(data_type data) {
     doubly_linked_list_node<data_type> * new_node = new doubly_linked_list_node<data_type>(data, NULL, NULL);
 
     if(!top) {
@@ -36,9 +36,9 @@ template<class data_type> void stack<data_type>::push(data_type * data) {
     this->size++;
 }
 
-template<class data_type> data_type * stack<data_type>::pop() {
-    doubly_linked_list_node<data_type> *  deleted_node;
-    data_type * deleted_data = NULL;
+template<class data_type> data_type stack<data_type>::pop() {
+    doubly_linked_list_node<data_type> * deleted_node;
+    data_type deleted_data;
 
     try{
         if(size == 0) 
@@ -52,8 +52,8 @@ template<class data_type> data_type * stack<data_type>::pop() {
 
         this->size--;
     } catch(long long error_code) {
-        data_type * nothing = new data_type(-1);
-        deleted_data = nothing;
+        std::cout<<"No elements in the stack\n";
+        deleted_data = *(new data_type());
     }
 
     return deleted_data;
